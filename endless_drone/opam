@@ -1,0 +1,14 @@
+opam-version: "2.0"
+name: "endless_drone"
+version: "0.1"
+synopsis:
+  "Endless Drone is a blog on the political economy and the history of tech"
+maintainer: "Benjamin Dromard <benjamin.dromard@gmail.com>"
+authors: "Benjamin Dromard <benjamin.dromard@gmail.com>"
+depends: ["yocaml"]
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+dev-repo: "git+https://"

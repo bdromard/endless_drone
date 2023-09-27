@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Endless Drone</title> 
+  </head>
+
+  <body>
+    <h1>ENDLESS DRONE</h1>
+    <ul>
+        <li><a href="articles.html">Articles</li>
+        <li><a href="faq.html">FAQ</li>
+        <li><a href="resources.html">Resources</li>
+    </ul>
+    <hr>
+        {{#title}}<h2>{{.}}</h2>{{/title}}
+        {{#description}}<p>{{.}}</p>{{/description}}
+      <main>
+        {{{body}}}
+      </main>
+      <hr>    
+  </body>
+</html>

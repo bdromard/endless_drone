@@ -1,0 +1,9 @@
+(executable
+ (name endless_drone)
+ (promote (until-clean))
+ (libraries 
+   yocaml 
+   yocaml_mustache 
+   yocaml_yaml 
+   yocaml_markdown 
+   yocaml_unix))
