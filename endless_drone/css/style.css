@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Vollkorn'),url(//brick.freetls.fastly.net/fonts/vollkorn/500.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Cormorant';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Cormorant'),url(//brick.freetls.fastly.net/fonts/cormorant/700.woff) format('woff');
+}
+
+a {
+  background-color: #CBB1E2;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #7FFFD4;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  height: 10px;
+  background-color: #3B0561;
+}
+
+body {
+  background-color: #0B475E;
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 500;
+  color: #C8F7C5;
+ }
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.layout-title {
+  font-family: 'Cormorant';
+  font-style: normal;
+  font-weight: 700;
+  margin: 10px;
+}
+
+.layout-subtitle {
+  font-family: 'Cormorant';
+  font-style: italic;
+  font-weight: 700;
+}
+
+
+
