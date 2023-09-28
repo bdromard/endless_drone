@@ -1,5 +1,24 @@
 open Yocaml
 
+let reporter ppf =
+  let report src level ~over k msgf =
+    let k _ =
+      over () ;
+      k () in
+    let with_metadata header _tags k ppf fmt =
+      Format.kfprintf k ppf
+        ("[%a]%a[%a]: " ^^ fmt ^^ "\n%!")
+        Fmt.(styled `Blue int)
+        (Unix.getpid ()) Logs_fmt.pp_header (level, header)
+        Fmt.(styled `Magenta string)
+        (Logs.Src.name src) in
+    msgf @@ fun ?header ?tags fmt -> with_metadata header tags k ppf fmt in
+  { Logs.report }
+
+let () = Fmt_tty.setup_std_outputs ~style_renderer:`Ansi_tty ~utf_8:true ()
+let () = Logs.set_reporter (reporter Fmt.stderr)
+let () = Logs.set_level ~all:true (Some Logs.Debug)
+
 let destination = "_build"
 let css_destination = into destination "css"
 let images_destination = into destination "images"
@@ -14,7 +33,7 @@ let may_process_markdown file =
 ;;
 
 let pages =
-  process_files [ "/pages" ] 
+  process_files [ "pages/" ] 
   (fun f -> with_extension "html" f || with_extension "md" f) 
   (fun file ->
     let fname = basename file |> into destination in
@@ -61,7 +80,7 @@ let images =
   (fun file -> Build.copy_file file ~into:images_destination)
 ;;
 
-let articles_index =
+let index =
   let open Build in
   let* articles = 
     collection
@@ -79,9 +98,9 @@ let articles_index =
          |> fun x -> x, content)
   in
   create_file
-    (into destination "articles.html")
+    (into destination "index.html")
     (track_binary_update
-    >>> Yocaml_yaml.read_file_with_metadata (module Metadata.Page) "articles.md"
+    >>> Yocaml_yaml.read_file_with_metadata (module Metadata.Page) "index.md"
     >>> Yocaml_markdown.content_to_html ()
     >>> articles
     >>> Yocaml_mustache.apply_as_template (module Metadata.Articles) "templates/articles_list.html"
@@ -90,4 +109,4 @@ let articles_index =
 ;;
 
 let () =
-  Yocaml_unix.execute (pages >> css >> images >> articles >> articles_index)
+  Yocaml_unix.execute (pages >> css >> images >> articles >> index)
