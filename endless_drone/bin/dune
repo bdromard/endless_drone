@@ -6,4 +6,8 @@
    yocaml_mustache 
    yocaml_yaml 
    yocaml_markdown 
-   yocaml_unix))
+   yocaml_unix
+   fmt.tty
+   logs.fmt)
+ )
+
