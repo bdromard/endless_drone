@@ -1,2 +1,10 @@
 (lang dune 2.9)
 (name endless_drone)
+(package 
+  (name endless_drone)
+  (depends yocaml 
+   yocaml_mustache 
+   yocaml_yaml 
+   yocaml_markdown 
+   yocaml_unix))
+(generate_opam_files)
