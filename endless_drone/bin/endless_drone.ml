@@ -75,6 +75,7 @@ let css =
 let images =
   process_files [ "images/" ] (fun f ->
   with_extension "svg" f
+  || with_extension "jpg" f
   || with_extension "png" f
   || with_extension "gif" f)
   (fun file -> Build.copy_file file ~into:images_destination)
@@ -100,11 +101,11 @@ let index =
   create_file
     (into destination "index.html")
     (track_binary_update
-    >>> Yocaml_yaml.read_file_with_metadata (module Metadata.Page) "index.md"
+    >>> Yocaml_yaml.read_file_with_metadata (module Metadata.Page) "pages/index.md"
     >>> Yocaml_markdown.content_to_html ()
     >>> articles
-    >>> Yocaml_mustache.apply_as_template (module Metadata.Articles) "templates/articles_list.html"
     >>> Yocaml_mustache.apply_as_template (module Metadata.Articles) "templates/layout.html"
+    >>> Yocaml_mustache.apply_as_template (module Metadata.Articles) "templates/articles_list.html"
     >>^ Stdlib.snd)
 ;;
 
