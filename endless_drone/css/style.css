@@ -11,9 +11,18 @@
   font-weight: 700;
   src: local('Cormorant'),url(//brick.freetls.fastly.net/fonts/cormorant/700.woff) format('woff');
 }
-
 a {
-  background-color: #CBB1E2;
+   background-color: #CBB1E2;
+}
+
+header a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 3rem;
+  text-align: center;
+  border-radius: 15rem 10rem;
 }
 
 a:link {
@@ -23,6 +32,7 @@ a:link {
 a:visited {
   color: #7FFFD4;
 }
+
 a:hover {
   text-decoration: underline;
 }
@@ -45,6 +55,19 @@ header {
   flex-direction: column;
 }
 
+main {
+ display: flex;
+ justify-content: center;
+}
+
+main .homepage-presentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: justify ;
+  margin-right: 1rem;
+}
+
 .layout-menu {
   display: flex;
   flex-direction: row;
@@ -56,6 +79,7 @@ header {
   font-style: normal;
   font-weight: 700;
   margin: 10px;
+  height: 6rem;
 }
 
 .layout-subtitle {
