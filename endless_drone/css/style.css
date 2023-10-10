@@ -22,6 +22,7 @@ header a {
   width: 10rem;
   height: 3rem;
   text-align: center;
+  border: solid;
   border-radius: 15rem 10rem;
 }
 
