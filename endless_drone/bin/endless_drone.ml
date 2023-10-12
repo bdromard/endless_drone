@@ -1,5 +1,10 @@
 open Yocaml
 
+let template file = add_extension file "html" |> into "templates"
+let article_template = template "article"
+let review_template = template "review"
+let layout = template "layout"
+
 let reporter ppf =
   let report src level ~over k msgf =
     let k _ =
@@ -62,8 +67,22 @@ let articles =
     track_binary_update
     >>> Yocaml_yaml.read_file_with_metadata (module Metadata.Article) file
     >>> Yocaml_markdown.content_to_html ()  
-    >>> Yocaml_mustache.apply_as_template (module Metadata.Article) "templates/article.html"
-    >>> Yocaml_mustache.apply_as_template (module Metadata.Article) "templates/layout.html"
+    >>> Yocaml_mustache.apply_as_template (module Metadata.Article) article_template
+    >>> Yocaml_mustache.apply_as_template (module Metadata.Article) layout
+    >>^ Stdlib.snd))
+;;
+
+let book_reviews =
+  process_files [ "articles/reviews" ] (with_extension "md") (fun file ->
+    let open Build in
+    let target = article_destination file |> into destination in
+  create_file
+    target (
+    track_binary_update
+    >>> Yocaml_yaml.read_file_with_metadata (module Model.Review) file
+    >>> Yocaml_markdown.content_to_html ()  
+    >>> Yocaml_mustache.apply_as_template (module Model.Review) review_template
+    >>> Yocaml_mustache.apply_as_template (module Model.Review) layout
     >>^ Stdlib.snd))
 ;;
 
@@ -85,7 +104,7 @@ let index =
   let open Build in
   let* articles = 
     collection
-      (read_child_files "articles/" (with_extension "md"))
+      (collect_child_files ["articles"; "articles/reviews"] (with_extension "md"))
       (fun source ->
         track_binary_update
         >>> Yocaml_yaml.read_file_with_metadata (module Metadata.Article) source
@@ -110,4 +129,4 @@ let index =
 ;;
 
 let () =
-  Yocaml_unix.execute (pages >> css >> images >> articles >> index)
+  Yocaml_unix.execute (pages >> css >> images >> articles >> book_reviews >> index)
