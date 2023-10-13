@@ -1,5 +1,13 @@
 <article>
   <h2>{{article_title}}</h2>
-  {{reference.ref_author}}
-  {{{body}}}
+  <div class="reference-card">
+    <img src="{{reference.cover}}" alt="{{reference.cover_alt}}" >
+    <div class="reference-details">
+    <h3> Title : <em>{{reference.title}}</em> </h3>
+    <h3> Author(s) : {{reference.author}} </h3>
+    <p> Published in {{ reference.publication_year }} by {{ reference.publisher }}</p>
+    </div>
+  </div>
+    {{{body}}}
 </article>
+
