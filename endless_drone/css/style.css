@@ -69,6 +69,10 @@ main .homepage-presentation {
   margin-right: 1rem;
 }
 
+article {
+  text-align: justify;
+}
+
 .layout-menu {
   display: flex;
   flex-direction: row;
@@ -89,5 +93,27 @@ main .homepage-presentation {
   font-weight: 700;
 }
 
+.reference-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #CBB1E2;
+  max-width: 50%;
+  padding: 2rem;
+  border: solid;
+  border-radius: 15rem 10rem;
+  overflow: auto;
+}
 
+.reference-card img {
+  max-height: 300px;
+  max-width: 250px;
+  object-fit: cover;
+}
 
+.reference-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 2rem;
+}
