@@ -2,15 +2,16 @@ open Yocaml
 
 module Reference = struct
   type t = 
-    { ref_author : string ;
-      ref_title : string ;
-      ref_publisher : string ;
-      ref_publication_year : int ;
-      ref_cover : string 
+    { author : string ;
+      title : string ;
+      publisher : string ;
+      publication_year : int ;
+      cover : string ;
+      cover_alt : string ;
     }
 
-  let make ref_author ref_title ref_publisher ref_publication_year ref_cover =
-    { ref_author ; ref_title ; ref_publisher ; ref_publication_year ; ref_cover }
+  let make author title publisher publication_year cover cover_alt =
+    { author ; title ; publisher ; publication_year ; cover ; cover_alt }
 
   
   let from (type a) (module V : Metadata.VALIDABLE with type t = a) obj =
@@ -18,25 +19,27 @@ module Reference = struct
     (fun assoc ->
             let open Validate.Applicative in
             make
-            <$> V.(required_assoc string) "ref_author" assoc
-            <*> V.(required_assoc string) "ref_title" assoc
-            <*> V.(required_assoc string) "ref_publisher" assoc
-            <*> V.(required_assoc integer) "ref_publication_year" assoc
-            <*> V.(required_assoc string) "ref_cover" assoc)
+            <$> V.(required_assoc string) "author" assoc
+            <*> V.(required_assoc string) "title" assoc
+            <*> V.(required_assoc string) "publisher" assoc
+            <*> V.(required_assoc integer) "publication_year" assoc
+            <*> V.(required_assoc string) "cover" assoc
+            <*> V.(required_assoc string) "cover_alt" assoc)
     obj
   ;;
 
   let inject 
     (type a)
     (module D : Key_value.DESCRIBABLE with type t = a)
-    { ref_author ; ref_title ; ref_publisher ; ref_publication_year ; ref_cover }
+    { author ; title ; publisher ; publication_year ; cover ; cover_alt }
     =
     D.
-      [ "ref_author", string ref_author ;
-        "ref_title", string ref_title ;
-        "ref_publisher", string ref_publisher ;
-        "ref_publication_year", integer ref_publication_year ;
-        "ref_cover", string ref_cover ;
+      [ "author", string author ;
+        "title", string title ;
+        "publisher", string publisher ;
+        "publication_year", integer publication_year ;
+        "cover", string cover ;
+        "cover_alt", string cover_alt
       ]
   ;;
 end
