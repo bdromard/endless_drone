@@ -11,19 +11,10 @@
   font-weight: 700;
   src: local('Cormorant'),url(//brick.freetls.fastly.net/fonts/cormorant/700.woff) format('woff');
 }
-a {
-   background-color: #CBB1E2;
-}
 
-header a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 10rem;
-  height: 3rem;
-  text-align: center;
-  border: solid;
-  border-radius: 15rem 10rem;
+a {
+  background-color: #CBB1E2;
+  color: #C8F7C5;
 }
 
 a:link {
@@ -36,6 +27,40 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+header a {
+  border: solid;
+  border-radius: 15rem 10rem;
+
+}
+
+.header-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-menu a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 3rem;
+  text-align: center;
+  }
+
+.header-title {
+  font-family: 'Cormorant';
+  font-style: normal;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
 }
 
 hr {
@@ -51,10 +76,6 @@ body {
   color: #C8F7C5;
  }
 
-header {
-  display: flex;
-  flex-direction: column;
-}
 
 main {
  display: flex;
@@ -73,24 +94,10 @@ article {
   text-align: justify;
 }
 
-.layout-menu {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.layout-title {
-  font-family: 'Cormorant';
-  font-style: normal;
-  font-weight: 700;
-  margin: 10px;
-  height: 6rem;
-}
-
-.layout-subtitle {
-  font-family: 'Cormorant';
-  font-style: italic;
-  font-weight: 700;
+.list-articles a {
+  margin: auto;
+  padding: 0.5rem;
+  border-radius: 4rem 0.9rem; 
 }
 
 .reference-card {
