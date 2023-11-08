@@ -1,3 +1,5 @@
+/* FONTS */
+
 @font-face {
   font-family: 'Vollkorn';
   font-style: normal;
@@ -11,6 +13,8 @@
   font-weight: 700;
   src: local('Cormorant'),url(//brick.freetls.fastly.net/fonts/cormorant/700.woff) format('woff');
 }
+
+/* LINKS */
 
 a {
   background-color: #CBB1E2;
@@ -29,15 +33,35 @@ a:hover {
   text-decoration: underline;
 }
 
+/* HEADER */
+
 header {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
 header a {
   border: solid;
   border-radius: 15rem 10rem;
+}
 
+.header-title {
+  font-family: 'Cormorant';
+  font-style: normal;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+}
+
+.header-title a {
+  padding: 1rem;
+}
+
+.header-title p {
+  font-size: 2rem;
+  align-self: center;
+  margin: 0 auto;
 }
 
 .header-menu {
@@ -53,20 +77,9 @@ header a {
   width: 10rem;
   height: 3rem;
   text-align: center;
-  }
-
-.header-title {
-  font-family: 'Cormorant';
-  font-style: normal;
-  font-weight: 700;
-  display: flex;
-  flex-direction: row;
 }
 
-hr {
-  height: 10px;
-  background-color: #3B0561;
-}
+/* HOMEPAGE BODY */
 
 body {
   background-color: #0B475E;
@@ -94,11 +107,21 @@ article {
   text-align: justify;
 }
 
+hr {
+  height: 10px;
+  background-color: #3B0561;
+}
+
+
+/* LIST OF ARTICLES */
+
 .list-articles a {
   margin: auto;
   padding: 0.5rem;
   border-radius: 4rem 0.9rem; 
 }
+
+/* BIBLIOGRAPHICAL REFERENCE CARD */
 
 .reference-card {
   display: flex;
