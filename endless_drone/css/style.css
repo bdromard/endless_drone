@@ -68,7 +68,7 @@ header a {
   align-self: center;
   width: 50%;
   margin: 0 auto;
-  background-color: radial-gradient(#000, #0B475E);
+  background-color: radial-gradient(#0B475E, #000);
   border: groove 2rem #3B0561;
   border-radius: 35% 35%;
   font-style: oblique;
