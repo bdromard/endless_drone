@@ -150,6 +150,7 @@ main a, .list-articles a {
   border: solid #7FFFD4;
   border-radius: 15rem 10rem;
   overflow: auto;
+  color: #7FFFD4;
 }
 
 .reference-card img {
