@@ -58,7 +58,7 @@ header a {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   width: 30%;
 }
 
@@ -107,13 +107,19 @@ main {
  justify-content: center;
 }
 
-main .homepage-presentation {
+.homepage-presentation {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
   line-height: 1.5;
+  margin-left: 1rem;
   margin-right: 1rem;
+  width: 50%;
+}
+
+.homepage-image {
+  width: 50%;
 }
 
 article {
